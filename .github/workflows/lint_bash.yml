@@ -1,0 +1,19 @@
+---
+name: Bash Linting
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint Bash Scripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run bash lint
+        run: |
+          find . -type f -name '*.sh' -exec bash -n {} \;
