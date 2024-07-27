@@ -24,3 +24,9 @@ jobs:
 
       - name: Run yamllint
         run: yamllint .
+
+      - name: Run Slack Notification
+        if: always()
+        uses: opslabhqx/action-slacknotify@v1
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
